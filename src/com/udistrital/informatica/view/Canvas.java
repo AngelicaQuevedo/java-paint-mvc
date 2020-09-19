@@ -51,7 +51,6 @@ public class Canvas  extends javax.swing.JPanel {
      * @return List<Figure>
      */
     public List<Figure> getListaFiguras(){
-        System.out.println("Obtiene figuras");
         return this.shapeList;
     }
     
