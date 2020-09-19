@@ -249,9 +249,9 @@ public class MainWindow extends javax.swing.JFrame {
      */
     private void catchUpEvent() {
         btnGenerate.addActionListener(getControl());
-        jButtonPencil.addActionListener(getControl());
-        this.addComponentListener(getControl());
+        jButtonPencil.addActionListener(getControl());  
         jBtnClearCanvas.addActionListener(getControl());
+        this.addComponentListener(getControl());
 
     }
 
