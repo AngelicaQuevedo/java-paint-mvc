@@ -23,7 +23,6 @@ import javax.swing.event.ChangeListener;
  * 12/09/2020
  * v 1.1
  */
-
 public class FigureController implements MouseListener, ActionListener, ComponentListener, ChangeListener {
     
     /**
