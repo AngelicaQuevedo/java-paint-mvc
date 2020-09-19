@@ -5,7 +5,6 @@
  */
 package com.udistrital.informatica.view;
 
-import com.udistrital.informatica.model.Eraser;
 import com.udistrital.informatica.model.Figure;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -21,7 +20,6 @@ import java.util.List;
 public class Canvas  extends javax.swing.JPanel {
     
     
-    private Eraser eraser;
    /**
      * The Figure list
     */
@@ -33,7 +31,6 @@ public class Canvas  extends javax.swing.JPanel {
     public Canvas() {
         initComponents();
         shapeList = new ArrayList<>();
-        eraser = new Eraser();
     }
 
     @Override
@@ -44,7 +41,6 @@ public class Canvas  extends javax.swing.JPanel {
         for (Figure figure : shapeList) {
             figure.draw(g);
         }
-        eraser.draw(g);
     }
 
     @Override

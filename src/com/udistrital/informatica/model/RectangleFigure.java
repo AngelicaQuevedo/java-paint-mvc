@@ -23,9 +23,9 @@ public class RectangleFigure extends Figure {
     @Override
     public void draw(Graphics g) {
         Graphics2D g2 = (Graphics2D) g;
-        Rectangle p = new Rectangle(this.axisX , this.axisY, 100, 100);
+        Rectangle p = new Rectangle(this.axisX-50 , this.axisY-50, 100, 100);
         g2.setColor(this.color);
         g2.fill(p);
     }
 
-}
+    }

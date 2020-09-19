@@ -219,15 +219,15 @@ public class MainWindow extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGenerateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerateActionPerformed
-        canvas.repaint();
+        //canvas.repaint();
     }//GEN-LAST:event_btnGenerateActionPerformed
 
     private void jBtnPencilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPencilActionPerformed
-        canvas.repaint();
+        //canvas.repaint();
     }//GEN-LAST:event_jBtnPencilActionPerformed
 
     private void jBtnEraserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnEraserActionPerformed
-        canvas.repaint();
+        //canvas.repaint();
     }//GEN-LAST:event_jBtnEraserActionPerformed
 
     private void btnElegirColorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnElegirColorActionPerformed
@@ -252,9 +252,11 @@ public class MainWindow extends javax.swing.JFrame {
     private void catchUpEvent() {
         btnGenerate.addActionListener(getControl());
         jBtnPencil.addActionListener(getControl());
+        jBtnEraser.addActionListener(getControl());
         this.addComponentListener(getControl());
         jBtnClearCanvas.addActionListener(getControl());
-
+        canvas.addMouseListener(getControl());
+        canvas.addMouseMotionListener(getControl());
     }
 
     public JButton getBtnElegirColor() {

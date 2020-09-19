@@ -1,7 +1,7 @@
 package com.udistrital.informatica.controller;
 
 import com.udistrital.informatica.model.CircleFigure;
-import com.udistrital.informatica.model.Eraser;
+import com.udistrital.informatica.model.EraserFigure;
 import com.udistrital.informatica.model.RectangleFigure;
 import com.udistrital.informatica.model.Figure;
 import com.udistrital.informatica.model.TriangleFigure;
@@ -33,10 +33,6 @@ public class FigureController implements MouseListener, ActionListener, Componen
      */
     private final MainWindow mainWindow;
     /**
-     * The model eraser
-     */
-    private Eraser eraser;
-    /**
      * The suggested color choose message 
      */
     final static String MESSAGE = "You must choose a color";
@@ -59,21 +55,35 @@ public class FigureController implements MouseListener, ActionListener, Componen
      */
     public FigureController(MainWindow mainWindow) {
         this.mainWindow = mainWindow;
-        eraser =  new Eraser();
     }
 
     @Override
     public void mouseClicked(MouseEvent e) {
-       System.out.println("esta presionando");
+        if(!mainWindow.getBtnGenerate().isEnabled()){
+            if (mainWindow.getjTextBackgroundColor().getBackground().equals(Color.white)) {
+                    mainWindow.displayResult(MESSAGE, RESULT_MESSAGE);
+                    return;
+                }
+                switch (mainWindow.getCboFigureType().getSelectedIndex()) {
+                    case 1:
+                        createNewTriangle(e.getX(), e.getY());
+                        break;
+                    case 2:
+                        createNewRectangle(e.getX(), e.getY());
+                        break;
+                    case 3:
+                        createNewCircle(e.getX(), e.getY());
+                        break;
+                    default:
+                        mainWindow.displayResult(INVALID_TYPE, FIGURE_SELECTED);
+                        return;
+                }
+            mainWindow.getCanvas().repaint();
+        }        
     }
 
     @Override
     public void mousePressed(MouseEvent e) {
-        System.out.println("esta presionando");
-      if(true){
-          eraser.pressed(e.getX(), e.getY());
-      }
-      mainWindow.getCanvas().repaint();
     }
 
     @Override
@@ -90,17 +100,17 @@ public class FigureController implements MouseListener, ActionListener, Componen
     
     @Override
     public void mouseDragged(MouseEvent e) {
-        if(true){
-          eraser.dragged(e.getX(), e.getY());
-      }
-      mainWindow.getCanvas().repaint();
+        if(!mainWindow.getjBtnEraser().isEnabled()){
+            createEraser(e.getX(), e.getY());
+            mainWindow.getCanvas().repaint();
+        }               
     }
     @Override
     public void actionPerformed(ActionEvent e) {
 
         if (e.getSource() instanceof JButton) {
             JButton boton = (JButton) e.getSource();      
-            if (boton == mainWindow.getBtnGenerate()) {
+            /*if (boton == mainWindow.getBtnGenerate()) {
                 if (mainWindow.getjTextBackgroundColor().getBackground().equals(Color.white)) {
                     mainWindow.displayResult(MESSAGE, RESULT_MESSAGE);
                     return;
@@ -119,51 +129,69 @@ public class FigureController implements MouseListener, ActionListener, Componen
                         mainWindow.displayResult(INVALID_TYPE, FIGURE_SELECTED);
                         return;
                 }
-
+            }*/
+            
+            if (boton == mainWindow.getBtnGenerate()) {
+                mainWindow.getjBtnEraser().setEnabled(true);
+                mainWindow.getjBtnPencil().setEnabled(true);
+                mainWindow.getBtnGenerate().setEnabled(false);
             }
-
+            
             if (boton == mainWindow.getjBtnClearCanvas()) {
                 mainWindow.getCanvas().getListaFiguras().clear();
             }
             
             if (boton == mainWindow.getjBtnEraser()) {
-                mainWindow.getCanvas().getListaFiguras().clear();
+                mainWindow.getjBtnEraser().setEnabled(false);
+                mainWindow.getjBtnPencil().setEnabled(true); 
+                mainWindow.getBtnGenerate().setEnabled(true);
             }
             
             if (boton == mainWindow.getjBtnPencil()) {
-                mainWindow.getCanvas().getListaFiguras().clear();
+                mainWindow.getjBtnEraser().setEnabled(true);
+                mainWindow.getjBtnPencil().setEnabled(false);
+                mainWindow.getBtnGenerate().setEnabled(true);
             }
-            
-            
+           
+         mainWindow.getCanvas().repaint();   
         }
     }
 
-    private TriangleFigure createNewTriangle() {
-        Random rand = new Random();
+    private TriangleFigure createNewTriangle (Integer pointX, Integer pointY) {
+        /*Random rand = new Random();
         int pointX = rand.nextInt(340);
-        int pointY = rand.nextInt(331);
+        int pointY = rand.nextInt(331);*/
         TriangleFigure tria = new TriangleFigure(mainWindow.getjTextBackgroundColor().getBackground(), "Adding a new rectangle", pointX, pointY);
         mainWindow.getCanvas().getListaFiguras().add(tria);
         return tria;
 
     }
 
-    private Figure createNewRectangle() {
-        Random rand = new Random();
+    private Figure createNewRectangle(Integer pointX, Integer pointY) {
+        /*Random rand = new Random();
         int pointX = rand.nextInt(349);
-        int pointY = rand.nextInt(331);
+        int pointY = rand.nextInt(331);*/
         RectangleFigure squ = new RectangleFigure(mainWindow.getjTextBackgroundColor().getBackground(), "Adding a new rectangle", pointX, pointY);
         mainWindow.getCanvas().getListaFiguras().add(squ);
         return squ;
     }
 
-    private Figure createNewCircle() {
-        Random rand = new Random();
+    private Figure createNewCircle(Integer pointX, Integer pointY) {
+        /*Random rand = new Random();
         int pointX = rand.nextInt(340);
-        int pointY = rand.nextInt(331);
+        int pointY = rand.nextInt(331);*/
         CircleFigure cir = new CircleFigure(mainWindow.getjTextBackgroundColor().getBackground(), "Adding a new rectangle", pointX, pointY, 24);
         mainWindow.getCanvas().getListaFiguras().add(cir);
         return cir;
+    }
+    
+    private Figure createEraser(Integer pointX, Integer pointY) {
+        /*Random rand = new Random();
+        int pointX = rand.nextInt(340);
+        int pointY = rand.nextInt(331);*/
+        EraserFigure squ = new EraserFigure(Color.white, "Starting a new eraser", pointX, pointY);
+        mainWindow.getCanvas().getListaFiguras().add(squ);
+        return squ;
     }
     
     @Override
@@ -188,7 +216,6 @@ public class FigureController implements MouseListener, ActionListener, Componen
 
     @Override
     public void mouseMoved(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }
