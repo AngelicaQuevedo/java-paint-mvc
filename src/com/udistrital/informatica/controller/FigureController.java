@@ -1,6 +1,7 @@
 package com.udistrital.informatica.controller;
 
 import com.udistrital.informatica.model.CircleFigure;
+import com.udistrital.informatica.model.Eraser;
 import com.udistrital.informatica.model.RectangleFigure;
 import com.udistrital.informatica.model.Figure;
 import com.udistrital.informatica.model.TriangleFigure;
@@ -12,6 +13,8 @@ import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
+import java.awt.geom.Path2D;
 import java.util.Random;
 import javax.swing.JButton;
 import javax.swing.event.ChangeEvent;
@@ -23,12 +26,16 @@ import javax.swing.event.ChangeListener;
  * 12/09/2020
  * v 1.1
  */
-public class FigureController implements MouseListener, ActionListener, ComponentListener, ChangeListener {
+public class FigureController implements MouseListener, ActionListener, ComponentListener, ChangeListener, MouseMotionListener {
     
     /**
      * The Main Window
      */
     private final MainWindow mainWindow;
+    /**
+     * The model eraser
+     */
+    private Eraser eraser;
     /**
      * The suggested color choose message 
      */
@@ -45,21 +52,28 @@ public class FigureController implements MouseListener, ActionListener, Componen
      * The Figure selected message
      */
     final static String FIGURE_SELECTED = "Figure selection";
-
+    
     /**
      * The Constructor
      * @param mainWindow
      */
     public FigureController(MainWindow mainWindow) {
         this.mainWindow = mainWindow;
+        eraser =  new Eraser();
     }
 
     @Override
     public void mouseClicked(MouseEvent e) {
+       System.out.println("esta presionando");
     }
 
     @Override
     public void mousePressed(MouseEvent e) {
+        System.out.println("esta presionando");
+      if(true){
+          eraser.pressed(e.getX(), e.getY());
+      }
+      mainWindow.getCanvas().repaint();
     }
 
     @Override
@@ -73,12 +87,19 @@ public class FigureController implements MouseListener, ActionListener, Componen
     @Override
     public void mouseExited(MouseEvent e) {
     }
-
+    
+    @Override
+    public void mouseDragged(MouseEvent e) {
+        if(true){
+          eraser.dragged(e.getX(), e.getY());
+      }
+      mainWindow.getCanvas().repaint();
+    }
     @Override
     public void actionPerformed(ActionEvent e) {
 
         if (e.getSource() instanceof JButton) {
-            JButton boton = (JButton) e.getSource();
+            JButton boton = (JButton) e.getSource();      
             if (boton == mainWindow.getBtnGenerate()) {
                 if (mainWindow.getjTextBackgroundColor().getBackground().equals(Color.white)) {
                     mainWindow.displayResult(MESSAGE, RESULT_MESSAGE);
@@ -104,6 +125,16 @@ public class FigureController implements MouseListener, ActionListener, Componen
             if (boton == mainWindow.getjBtnClearCanvas()) {
                 mainWindow.getCanvas().getListaFiguras().clear();
             }
+            
+            if (boton == mainWindow.getjBtnEraser()) {
+                mainWindow.getCanvas().getListaFiguras().clear();
+            }
+            
+            if (boton == mainWindow.getjBtnPencil()) {
+                mainWindow.getCanvas().getListaFiguras().clear();
+            }
+            
+            
         }
     }
 
@@ -134,7 +165,7 @@ public class FigureController implements MouseListener, ActionListener, Componen
         mainWindow.getCanvas().getListaFiguras().add(cir);
         return cir;
     }
-
+    
     @Override
     public void componentResized(ComponentEvent e) {
     }
@@ -153,6 +184,11 @@ public class FigureController implements MouseListener, ActionListener, Componen
 
     @Override
     public void stateChanged(ChangeEvent e) {
+    }
+
+    @Override
+    public void mouseMoved(MouseEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }
