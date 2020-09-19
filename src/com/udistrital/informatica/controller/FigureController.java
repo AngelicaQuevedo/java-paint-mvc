@@ -110,27 +110,7 @@ public class FigureController implements MouseListener, ActionListener, Componen
 
         if (e.getSource() instanceof JButton) {
             JButton boton = (JButton) e.getSource();      
-            /*if (boton == mainWindow.getBtnGenerate()) {
-                if (mainWindow.getjTextBackgroundColor().getBackground().equals(Color.white)) {
-                    mainWindow.displayResult(MESSAGE, RESULT_MESSAGE);
-                    return;
-                }
-                switch (mainWindow.getCboFigureType().getSelectedIndex()) {
-                    case 1:
-                        createNewTriangle();
-                        break;
-                    case 2:
-                        createNewRectangle();
-                        break;
-                    case 3:
-                        createNewCircle();
-                        break;
-                    default:
-                        mainWindow.displayResult(INVALID_TYPE, FIGURE_SELECTED);
-                        return;
-                }
-            }*/
-            
+                        
             if (boton == mainWindow.getBtnGenerate()) {
                 mainWindow.getjBtnEraser().setEnabled(true);
                 mainWindow.getjBtnPencil().setEnabled(true);
@@ -158,37 +138,25 @@ public class FigureController implements MouseListener, ActionListener, Componen
     }
 
     private TriangleFigure createNewTriangle (Integer pointX, Integer pointY) {
-        /*Random rand = new Random();
-        int pointX = rand.nextInt(340);
-        int pointY = rand.nextInt(331);*/
         TriangleFigure tria = new TriangleFigure(mainWindow.getjTextBackgroundColor().getBackground(), "Adding a new rectangle", pointX, pointY);
         mainWindow.getCanvas().getListaFiguras().add(tria);
         return tria;
 
     }
 
-    private Figure createNewRectangle(Integer pointX, Integer pointY) {
-        /*Random rand = new Random();
-        int pointX = rand.nextInt(349);
-        int pointY = rand.nextInt(331);*/
+    private RectangleFigure createNewRectangle(Integer pointX, Integer pointY) {
         RectangleFigure squ = new RectangleFigure(mainWindow.getjTextBackgroundColor().getBackground(), "Adding a new rectangle", pointX, pointY);
         mainWindow.getCanvas().getListaFiguras().add(squ);
         return squ;
     }
 
-    private Figure createNewCircle(Integer pointX, Integer pointY) {
-        /*Random rand = new Random();
-        int pointX = rand.nextInt(340);
-        int pointY = rand.nextInt(331);*/
-        CircleFigure cir = new CircleFigure(mainWindow.getjTextBackgroundColor().getBackground(), "Adding a new rectangle", pointX, pointY, 24);
+    private CircleFigure createNewCircle(Integer pointX, Integer pointY) {
+        CircleFigure cir = new CircleFigure(mainWindow.getjTextBackgroundColor().getBackground(), "Adding a new rectangle", pointX, pointY, 100);
         mainWindow.getCanvas().getListaFiguras().add(cir);
         return cir;
     }
     
-    private Figure createEraser(Integer pointX, Integer pointY) {
-        /*Random rand = new Random();
-        int pointX = rand.nextInt(340);
-        int pointY = rand.nextInt(331);*/
+    private EraserFigure createEraser(Integer pointX, Integer pointY) {
         EraserFigure squ = new EraserFigure(Color.white, "Starting a new eraser", pointX, pointY);
         mainWindow.getCanvas().getListaFiguras().add(squ);
         return squ;
