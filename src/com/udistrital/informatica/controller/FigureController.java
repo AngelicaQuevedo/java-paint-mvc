@@ -3,7 +3,6 @@ package com.udistrital.informatica.controller;
 import com.udistrital.informatica.model.CircleFigure;
 import com.udistrital.informatica.model.EraserFigure;
 import com.udistrital.informatica.model.RectangleFigure;
-import com.udistrital.informatica.model.Figure;
 import com.udistrital.informatica.model.TriangleFigure;
 import com.udistrital.informatica.view.MainWindow;
 import java.awt.Color;
@@ -14,9 +13,8 @@ import java.awt.event.ComponentListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
-import java.awt.geom.Path2D;
-import java.util.Random;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
@@ -134,6 +132,12 @@ public class FigureController implements MouseListener, ActionListener, Componen
             }
            
          mainWindow.getCanvas().repaint();   
+        }
+        
+        if (e.getSource() instanceof JComboBox) {
+            JComboBox cboListaSize = (JComboBox) e.getSource();
+            mainWindow.getCanvas().setCurrentSize(Integer.parseInt((String) cboListaSize.getSelectedItem()));
+            
         }
     }
 
