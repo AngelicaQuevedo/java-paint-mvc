@@ -6,6 +6,7 @@
 package com.udistrital.informatica.controller;
 
 import com.udistrital.informatica.model.InterfaceDragMouse;
+import com.udistrital.informatica.view.MainWindow;
 import java.awt.Canvas;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -20,38 +21,44 @@ public class PencilController implements MouseMotionListener{
 
 /** Class in charge of doing something with the drag of the mouse */
     private InterfaceDragMouse accion;
+    private MainWindow mainWindow;
     
 
-    public PencilController(InterfaceDragMouse accion){
+    public PencilController(InterfaceDragMouse accion, MainWindow mainWindow ){
         this.accion = accion;
+        this.mainWindow = mainWindow;
     }
 
    boolean dragging = false;
     int xOld;
     int yOld;
 
-    public void mouseMoved(MouseEvent e)
-    {
-        if (dragging == true)
-            accion.endDrag(xOld, yOld);
-        dragging = false;
-        xOld = e.getX();
-        yOld = e.getY();
+    public void mouseMoved(MouseEvent e){   
+        if(!mainWindow.getjBtnPencil().isEnabled()){
+            if (dragging == true){
+                accion.endDrag(xOld, yOld);
+                dragging = false;
+            }  
+            xOld = e.getX();
+            yOld = e.getY();
+        }  
     }
 
     /**
      * Update all coordinates.
      */
-    public void mouseDragged(MouseEvent e)
-    {
-        if (dragging == false)
-        {
-            accion.startDrag(e.getX(), e.getY());
-            dragging = true;
+    public void mouseDragged(MouseEvent e){   
+        if(!mainWindow.getjBtnPencil().isEnabled()){
+            if (dragging == false){
+                accion.startDrag(e.getX(), e.getY());
+                dragging = true;
+            }
+            accion.drag(xOld, yOld, e.getX(), e.getY());
+            xOld = e.getX();
+            yOld = e.getY();
+            //mainWindow.getCanvas().repaint();
         }
-        accion.drag(xOld, yOld, e.getX(), e.getY());
-        xOld = e.getX();
-        yOld = e.getY();
+        
     }
 
     /**

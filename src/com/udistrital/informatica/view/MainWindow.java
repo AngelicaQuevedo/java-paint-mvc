@@ -1,8 +1,10 @@
 package com.udistrital.informatica.view;
 
 import com.udistrital.informatica.controller.FigureController;
+import com.udistrital.informatica.controller.PencilController;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.event.MouseMotionListener;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JColorChooser;
@@ -28,6 +30,11 @@ public class MainWindow extends javax.swing.JFrame {
      * The figure controller
      */
     private FigureController figureController;
+    
+    /**
+     * The figure controller
+     */
+    private PencilController pencilController;
 
     /**
      * The MainWindow constructor
@@ -64,6 +71,18 @@ public class MainWindow extends javax.swing.JFrame {
             figureController = new FigureController(this);
         }
         return figureController;
+    }
+    
+    /**
+     * Method that returns a instance of the pencil controller
+     * @return PencilController
+     */
+    public PencilController getPencilController() {
+        if (pencilController == null){
+            pencilController = new PencilController(canvas.getPintaTrazo(),this);
+        }
+        return pencilController;
+        
     }
 
     /**
@@ -119,6 +138,7 @@ public class MainWindow extends javax.swing.JFrame {
         });
 
         jBtnPencil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/udistrital/informatica/resources/images/lapiz.png"))); // NOI18N
+        jBtnPencil.setEnabled(false);
         jBtnPencil.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBtnPencilActionPerformed(evt);
@@ -281,6 +301,7 @@ public class MainWindow extends javax.swing.JFrame {
         canvas.addMouseListener(getControl());
         canvas.addMouseMotionListener(getControl());
         cboLineSize.addActionListener(getControl());
+        canvas.addMouseMotionListener(getPencilController());
    }
     
     

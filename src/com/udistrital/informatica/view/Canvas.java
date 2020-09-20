@@ -37,7 +37,7 @@ public class Canvas  extends javax.swing.JPanel {
      * variables pencil
     */
     private PaintLine pintaTrazo = null;
-    private PencilController listener = null;
+    //private PencilController listener = null;
     private LinkedList<Line> lines;
     private boolean dragMode = false;
     
@@ -52,8 +52,8 @@ public class Canvas  extends javax.swing.JPanel {
         */
         lines = new LinkedList<Line>();
         pintaTrazo = new PaintLine(lines, this);
-        listener = new PencilController(pintaTrazo);
-        addMouseMotionListener(listener);
+        //listener = new PencilController(pintaTrazo);
+        //addMouseMotionListener(listener);
     }
 
     /*
@@ -70,18 +70,17 @@ public class Canvas  extends javax.swing.JPanel {
     
     @Override
     protected void paintComponent(Graphics g) {
-         if (shapeList.isEmpty()){
-        }
+        //if (shapeList.isEmpty()){
+        //}
         super.paintComponent(g);
-        for (Figure figure : shapeList) {
-            figure.draw(g);
-        }
-        
         /**
         * Draw the lines in this component
         */
         for (int i = 0; i < lines.size(); i++){
             drawLine(lines.get(i), g);
+        }
+        for (Figure figure : shapeList) {
+            figure.draw(g);
         }
     }
     
@@ -145,11 +144,20 @@ public class Canvas  extends javax.swing.JPanel {
     }
     
     /**
-     * @param List<Figure>
+     * @param LinkedList<Line>
      */
     public void setLine(LinkedList<Line> lines){
         this.lines = lines;
     }
+
+    public PaintLine getPintaTrazo(){
+        if (pintaTrazo == null){
+            pintaTrazo = new PaintLine(lines, this);
+        }
+        return pintaTrazo;
+    }
+    
+    
                   
 
 
