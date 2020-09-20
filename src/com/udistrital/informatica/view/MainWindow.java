@@ -41,6 +41,14 @@ public class MainWindow extends javax.swing.JFrame {
         dcbm.addElement("Triangle");
         dcbm.addElement("Square");
         dcbm.addElement("Circle");
+        //DefaultComboBoxModel listaSizeLn = new DefaultComboBoxModel();
+       
+        //cboLineSize.addItem("Choose a Size ..");
+        cboLineSize.addItem("5");
+        cboLineSize.addItem("10");
+        cboLineSize.addItem("15");
+        cboLineSize.addItem("20");
+        
         jTextBackgroundColor.setBackground(Color.white);
         canvas = new Canvas();
         canvas.setBounds(4, 4, 450, 450);
@@ -80,6 +88,9 @@ public class MainWindow extends javax.swing.JFrame {
         btnElegirColor = new javax.swing.JButton();
         jButtonEraser = new javax.swing.JButton();
         jButtonPencil = new javax.swing.JButton();
+        cboLineSize = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
+        jSeparator3 = new javax.swing.JSeparator();
         btnGenerate = new javax.swing.JButton();
         jBtnClearCanvas = new javax.swing.JButton();
 
@@ -117,6 +128,10 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
 
+        cboLineSize.setActionCommand("");
+
+        jLabel1.setText("Pencil Size");
+
         javax.swing.GroupLayout plHudLayout = new javax.swing.GroupLayout(plHud);
         plHud.setLayout(plHudLayout);
         plHudLayout.setHorizontalGroup(
@@ -134,10 +149,17 @@ public class MainWindow extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnElegirColor))
                     .addGroup(plHudLayout.createSequentialGroup()
+                        .addComponent(jButtonEraser, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(plHudLayout.createSequentialGroup()
+                        .addComponent(jButtonPencil, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(plHudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButtonEraser, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButtonPencil, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                            .addGroup(plHudLayout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(cboLineSize, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jSeparator3))
                 .addContainerGap())
         );
         plHudLayout.setVerticalGroup(
@@ -145,9 +167,18 @@ public class MainWindow extends javax.swing.JFrame {
             .addGroup(plHudLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jButtonEraser, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35)
+                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonPencil, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(55, 55, 55)
+                .addGroup(plHudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(plHudLayout.createSequentialGroup()
+                        .addGap(4, 4, 4)
+                        .addComponent(jButtonPencil, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(plHudLayout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cboLineSize, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cboFigureType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -230,6 +261,7 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void btnElegirColorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnElegirColorActionPerformed
         jTextBackgroundColor.setBackground(JColorChooser.showDialog(rootPane, "Choose the color of the figure", Color.RED));
+        this.canvas.setCurrentColor(jTextBackgroundColor.getBackground());
     }//GEN-LAST:event_btnElegirColorActionPerformed
 
     private void cboFigureTypeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboFigureTypeItemStateChanged
@@ -249,12 +281,13 @@ public class MainWindow extends javax.swing.JFrame {
      */
     private void catchUpEvent() {
         btnGenerate.addActionListener(getControl());
-        jButtonPencil.addActionListener(getControl());  
-        jBtnClearCanvas.addActionListener(getControl());
+        jButtonPencil.addActionListener(getControl());
+        cboLineSize.addActionListener(getControl());
         this.addComponentListener(getControl());
-
-    }
-
+        jBtnClearCanvas.addActionListener(getControl());
+   }
+    
+    
     public JButton getBtnElegirColor() {
         return btnElegirColor;
     }
@@ -302,18 +335,25 @@ public class MainWindow extends javax.swing.JFrame {
         return canvas;
     }
 
+    public JComboBox<String> getCboLineSize() {
+        return cboLineSize;
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnElegirColor;
     private javax.swing.JButton btnGenerate;
     private javax.swing.JComboBox<String> cboFigureType;
+    private javax.swing.JComboBox<String> cboLineSize;
     private javax.swing.JButton jBtnClearCanvas;
     private javax.swing.JButton jButtonEraser;
     private javax.swing.JButton jButtonPencil;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
     private javax.swing.JTextField jTextBackgroundColor;
     private javax.swing.JPanel plHud;
     // End of variables declaration//GEN-END:variables

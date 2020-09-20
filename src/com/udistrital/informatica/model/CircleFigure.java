@@ -3,8 +3,6 @@ package com.udistrital.informatica.model;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Shape;
-import java.awt.geom.Ellipse2D;
 
 
 /**
@@ -29,11 +27,12 @@ public class CircleFigure extends Figure {
 
     @Override
     public void draw(Graphics g) {
-        Graphics2D g2 = (Graphics2D) g; 
-        Shape circle = new Ellipse2D.Double(axisX, axisY,radius, radius);
+        Graphics2D g2 = (Graphics2D) g;
+        axisX = axisX-(radius/2);
+        axisY = axisY-(radius/2);
 
         g2.setColor(this.color);
-        g2.fill(circle);
+        g2.fillArc(axisX,axisY,radius,radius, 0, 360);
     }    
 }
     
