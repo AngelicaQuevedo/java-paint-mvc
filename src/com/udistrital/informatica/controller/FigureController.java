@@ -117,6 +117,7 @@ public class FigureController implements MouseListener, ActionListener, Componen
             
             if (boton == mainWindow.getjBtnClearCanvas()) {
                 mainWindow.getCanvas().getListaFiguras().clear();
+                mainWindow.getCanvas().getLine().clear();
             }
             
             if (boton == mainWindow.getjBtnEraser()) {

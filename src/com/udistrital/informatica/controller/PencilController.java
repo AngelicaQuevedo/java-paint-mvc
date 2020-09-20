@@ -20,7 +20,7 @@ public class PencilController implements MouseMotionListener{
 
 /** Class in charge of doing something with the drag of the mouse */
     private InterfaceDragMouse accion;
-
+    
 
     public PencilController(InterfaceDragMouse accion){
         this.accion = accion;

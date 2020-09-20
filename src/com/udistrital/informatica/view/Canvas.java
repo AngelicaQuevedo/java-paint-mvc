@@ -38,7 +38,7 @@ public class Canvas  extends javax.swing.JPanel {
     */
     private PaintLine pintaTrazo = null;
     private PencilController listener = null;
-    private LinkedList<Line> lines = new LinkedList<Line>();
+    private LinkedList<Line> lines;
     private boolean dragMode = false;
     
     /**
@@ -50,6 +50,7 @@ public class Canvas  extends javax.swing.JPanel {
         /*
         * pencil
         */
+        lines = new LinkedList<Line>();
         pintaTrazo = new PaintLine(lines, this);
         listener = new PencilController(pintaTrazo);
         addMouseMotionListener(listener);
@@ -136,7 +137,20 @@ public class Canvas  extends javax.swing.JPanel {
         this.shapeList = shapeList;
     }
     
-                 
+    /**
+     * @return LinkedList<Line>
+     */
+    public LinkedList<Line> getLine(){
+        return this.lines;
+    }
+    
+    /**
+     * @param List<Figure>
+     */
+    public void setLine(LinkedList<Line> lines){
+        this.lines = lines;
+    }
+                  
 
 
 
