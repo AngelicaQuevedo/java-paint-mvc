@@ -86,8 +86,8 @@ public class MainWindow extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jTextBackgroundColor = new javax.swing.JTextField();
         btnElegirColor = new javax.swing.JButton();
-        jButtonEraser = new javax.swing.JButton();
-        jButtonPencil = new javax.swing.JButton();
+        jBtnEraser = new javax.swing.JButton();
+        jBtnPencil = new javax.swing.JButton();
         cboLineSize = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
@@ -114,17 +114,17 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
 
-        jButtonEraser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/udistrital/informatica/resources/images/borrador.png"))); // NOI18N
-        jButtonEraser.addActionListener(new java.awt.event.ActionListener() {
+        jBtnEraser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/udistrital/informatica/resources/images/borrador.png"))); // NOI18N
+        jBtnEraser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonEraserActionPerformed(evt);
+                jBtnEraserActionPerformed(evt);
             }
         });
 
-        jButtonPencil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/udistrital/informatica/resources/images/lapiz.png"))); // NOI18N
-        jButtonPencil.addActionListener(new java.awt.event.ActionListener() {
+        jBtnPencil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/udistrital/informatica/resources/images/lapiz.png"))); // NOI18N
+        jBtnPencil.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonPencilActionPerformed(evt);
+                jBtnPencilActionPerformed(evt);
             }
         });
 
@@ -149,10 +149,10 @@ public class MainWindow extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnElegirColor))
                     .addGroup(plHudLayout.createSequentialGroup()
-                        .addComponent(jButtonEraser, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jBtnEraser, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(plHudLayout.createSequentialGroup()
-                        .addComponent(jButtonPencil, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jBtnPencil, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(plHudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(plHudLayout.createSequentialGroup()
@@ -166,14 +166,12 @@ public class MainWindow extends javax.swing.JFrame {
             plHudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(plHudLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButtonEraser, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jBtnEraser, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(plHudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(plHudLayout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addComponent(jButtonPencil, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jBtnPencil, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(plHudLayout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -253,11 +251,11 @@ public class MainWindow extends javax.swing.JFrame {
         canvas.repaint();
     }//GEN-LAST:event_btnGenerateActionPerformed
 
-    private void jButtonPencilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPencilActionPerformed
-    }//GEN-LAST:event_jButtonPencilActionPerformed
+    private void jBtnPencilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPencilActionPerformed
+    }//GEN-LAST:event_jBtnPencilActionPerformed
 
-    private void jButtonEraserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEraserActionPerformed
-    }//GEN-LAST:event_jButtonEraserActionPerformed
+    private void jBtnEraserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnEraserActionPerformed
+    }//GEN-LAST:event_jBtnEraserActionPerformed
 
     private void btnElegirColorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnElegirColorActionPerformed
         jTextBackgroundColor.setBackground(JColorChooser.showDialog(rootPane, "Choose the color of the figure", Color.RED));
@@ -281,7 +279,7 @@ public class MainWindow extends javax.swing.JFrame {
      */
     private void catchUpEvent() {
         btnGenerate.addActionListener(getControl());
-        jButtonPencil.addActionListener(getControl());
+        jBtnPencil.addActionListener(getControl());
         cboLineSize.addActionListener(getControl());
         this.addComponentListener(getControl());
         jBtnClearCanvas.addActionListener(getControl());
@@ -301,11 +299,11 @@ public class MainWindow extends javax.swing.JFrame {
     }
 
     public JButton getjButtonEraser() {
-        return jButtonEraser;
+        return jBtnEraser;
     }
 
     public JButton getjButtonPencil() {
-        return jButtonPencil;
+        return jBtnPencil;
     }
 
     public JPanel getjPanel2() {
@@ -346,8 +344,8 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cboFigureType;
     private javax.swing.JComboBox<String> cboLineSize;
     private javax.swing.JButton jBtnClearCanvas;
-    private javax.swing.JButton jButtonEraser;
-    private javax.swing.JButton jButtonPencil;
+    private javax.swing.JButton jBtnEraser;
+    private javax.swing.JButton jBtnPencil;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;
