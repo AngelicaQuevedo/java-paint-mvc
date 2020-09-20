@@ -14,21 +14,27 @@ import java.awt.Rectangle;
  *
  * @author Eddy
  */
-public class EraserFigure extends Figure{
+public class StrokeFigure extends Figure{
+    
+    /**
+     * The radius
+     */
+    private Integer radius;
     
     /**
      * The constructor
      */
-    public EraserFigure(Color color, String description, Integer axisX, Integer axisY) {
+    public StrokeFigure(Color color, String description, Integer axisX, Integer axisY, Integer r) {
         super(color, description, axisX, axisY);
+        this.radius=r;
     }
 
     
     @Override
     public void draw(Graphics g) {
         Graphics2D g2 = (Graphics2D) g;
-        Rectangle p = new Rectangle(this.axisX-15 , this.axisY-15, 30, 30);
-        g2.setColor(Color.white);
+        Rectangle p = new Rectangle(this.axisX-(radius/2),this.axisY-(radius/2),radius,radius);
+        g2.setColor(this.color);
         g2.fill(p);
     }
     

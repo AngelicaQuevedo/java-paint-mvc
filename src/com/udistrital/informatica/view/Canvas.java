@@ -5,10 +5,7 @@
  */
 package com.udistrital.informatica.view;
 
-import com.udistrital.informatica.controller.PaintLine;
-import com.udistrital.informatica.controller.PencilController;
 import com.udistrital.informatica.model.Figure;
-import com.udistrital.informatica.model.Line;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -32,96 +29,25 @@ public class Canvas  extends javax.swing.JPanel {
      * The Figure list
     */
     private List<Figure> shapeList;
-    
-    /**
-     * variables pencil
-    */
-    private PaintLine pintaTrazo = null;
-    //private PencilController listener = null;
-    private LinkedList<Line> lines;
-    private boolean dragMode = false;
-    
+        
     /**
      * Creates new form Canvas
      */
     public Canvas() {
         initComponents();
         shapeList = new ArrayList<>();
-        /*
-        * pencil
-        */
-        lines = new LinkedList<Line>();
-        pintaTrazo = new PaintLine(lines, this);
-        //listener = new PencilController(pintaTrazo);
-        //addMouseMotionListener(listener);
     }
-
-    /*
-    * If the mode is drag, delete the canvas
-    */
-    @Override
-    public void update(Graphics g)
-    { 
-        if (dragMode){
-           super.update(g);
-        }
-        paint(g);
-    }
-    
+   
     @Override
     protected void paintComponent(Graphics g) {
         //if (shapeList.isEmpty()){
         //}
         super.paintComponent(g);
-        /**
-        * Draw the lines in this component
-        */
-        for (int i = 0; i < lines.size(); i++){
-            drawLine(lines.get(i), g);
-        }
         for (Figure figure : shapeList) {
             figure.draw(g);
         }
     }
-    
-    /**
-     * Draw a line
-    */
-    private void drawLine(Line trazo, Graphics g)
-    {   Graphics2D dibujar=  (Graphics2D)g;
-        g.setColor(trazo.getColor());
-        dibujar.setStroke(new BasicStroke(trazo.getSizeLine()));
-        Point2D p0 = trazo.getPunto(0);
-        for (int i = 0; i < trazo.getNumeroPuntos() - 1; i++)
-        {
-            Point2D p1 = trazo.getPunto(i + 1);
-            g.drawLine((int) p0.getX(), (int) p0.getY(), (int) p1.getX(),
-                    (int) p1.getY());
-            p0 = p1;
-        }
-    }
-    
-    /**
-     * change the color of the line
-     * @param currentColor
-     */
-    public void setCurrentColor(Color currentColor){
-        pintaTrazo.setCurrentColor(currentColor);
-    }
-    
-    /**
-     * change the Size of the line
-     * @param currentColor
-     */
-    public void setCurrentSize(int currentSize) {
-        pintaTrazo.setCurrentSize(currentSize);
-    }
-    
-    @Override
-    public Dimension getPreferredSize() {
-        return new Dimension(450, 450);
-    }
-    
+     
     /**
      * @return List<Figure>
      */
@@ -135,32 +61,6 @@ public class Canvas  extends javax.swing.JPanel {
     public void setListaFiguras(List<Figure> shapeList){
         this.shapeList = shapeList;
     }
-    
-    /**
-     * @return LinkedList<Line>
-     */
-    public LinkedList<Line> getLine(){
-        return this.lines;
-    }
-    
-    /**
-     * @param LinkedList<Line>
-     */
-    public void setLine(LinkedList<Line> lines){
-        this.lines = lines;
-    }
-
-    public PaintLine getPintaTrazo(){
-        if (pintaTrazo == null){
-            pintaTrazo = new PaintLine(lines, this);
-        }
-        return pintaTrazo;
-    }
-    
-    
-                  
-
-
 
     /**
      * This method is called from within the constructor to initialize the form.

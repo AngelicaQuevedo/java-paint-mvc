@@ -1,7 +1,7 @@
 package com.udistrital.informatica.controller;
 
 import com.udistrital.informatica.model.CircleFigure;
-import com.udistrital.informatica.model.EraserFigure;
+import com.udistrital.informatica.model.StrokeFigure;
 import com.udistrital.informatica.model.RectangleFigure;
 import com.udistrital.informatica.model.TriangleFigure;
 import com.udistrital.informatica.view.MainWindow;
@@ -14,7 +14,6 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
@@ -82,6 +81,17 @@ public class FigureController implements MouseListener, ActionListener, Componen
 
     @Override
     public void mousePressed(MouseEvent e) {
+        if(!mainWindow.getjBtnEraser().isEnabled()){
+            createEraser(e.getX(), e.getY());
+            mainWindow.getCanvas().repaint();
+        }else if (!mainWindow.getjBtnPencil().isEnabled()){
+            if (mainWindow.getjTextBackgroundColor().getBackground().equals(Color.white)) {
+                mainWindow.displayResult(MESSAGE, RESULT_MESSAGE);
+                return;
+            }
+            createPencil(e.getX(), e.getY());
+            mainWindow.getCanvas().repaint();
+        }
     }
 
     @Override
@@ -101,6 +111,13 @@ public class FigureController implements MouseListener, ActionListener, Componen
         if(!mainWindow.getjBtnEraser().isEnabled()){
             createEraser(e.getX(), e.getY());
             mainWindow.getCanvas().repaint();
+        }else if (!mainWindow.getjBtnPencil().isEnabled()){
+            if (mainWindow.getjTextBackgroundColor().getBackground().equals(Color.white)) {
+                mainWindow.displayResult(MESSAGE, RESULT_MESSAGE);
+                return;
+            }
+            createPencil(e.getX(), e.getY());
+            mainWindow.getCanvas().repaint();
         }               
     }
     @Override
@@ -117,7 +134,6 @@ public class FigureController implements MouseListener, ActionListener, Componen
             
             if (boton == mainWindow.getjBtnClearCanvas()) {
                 mainWindow.getCanvas().getListaFiguras().clear();
-                mainWindow.getCanvas().getLine().clear();
             }
             
             if (boton == mainWindow.getjBtnEraser()) {
@@ -133,13 +149,7 @@ public class FigureController implements MouseListener, ActionListener, Componen
             }
            
          mainWindow.getCanvas().repaint();   
-        }
-        
-        if (e.getSource() instanceof JComboBox) {
-            JComboBox cboListaSize = (JComboBox) e.getSource();
-            mainWindow.getCanvas().setCurrentSize(Integer.parseInt((String) cboListaSize.getSelectedItem()));
-            
-        }
+        }        
     }
 
     private TriangleFigure createNewTriangle (Integer pointX, Integer pointY) {
@@ -161,10 +171,16 @@ public class FigureController implements MouseListener, ActionListener, Componen
         return cir;
     }
     
-    private EraserFigure createEraser(Integer pointX, Integer pointY) {
-        EraserFigure squ = new EraserFigure(Color.white, "Starting a new eraser", pointX, pointY);
-        mainWindow.getCanvas().getListaFiguras().add(squ);
-        return squ;
+    private StrokeFigure createEraser(Integer pointX, Integer pointY) {
+        StrokeFigure era = new StrokeFigure(Color.white, "Starting a new eraser", pointX, pointY,30);
+        mainWindow.getCanvas().getListaFiguras().add(era);
+        return era;
+    }
+    
+    private StrokeFigure createPencil(Integer pointX, Integer pointY) {
+        StrokeFigure pen = new StrokeFigure(mainWindow.getjTextBackgroundColor().getBackground(), "Starting a new pencil", pointX, pointY,Integer.parseInt((String) mainWindow.getCboLineSize().getSelectedItem()));
+        mainWindow.getCanvas().getListaFiguras().add(pen);
+        return pen;
     }
     
     @Override

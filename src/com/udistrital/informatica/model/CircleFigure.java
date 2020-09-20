@@ -30,7 +30,7 @@ public class CircleFigure extends Figure {
     @Override
     public void draw(Graphics g) {
         Graphics2D g2 = (Graphics2D) g; 
-        Shape circle = new Ellipse2D.Double(axisX, axisY,radius, radius);
+        Shape circle = new Ellipse2D.Double(axisX-(radius/2), axisY-(radius/2),radius, radius);
 
         g2.setColor(this.color);
         g2.fill(circle);

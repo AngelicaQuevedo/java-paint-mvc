@@ -1,7 +1,6 @@
 package com.udistrital.informatica.view;
 
 import com.udistrital.informatica.controller.FigureController;
-import com.udistrital.informatica.controller.PencilController;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.event.MouseMotionListener;
@@ -30,11 +29,6 @@ public class MainWindow extends javax.swing.JFrame {
      * The figure controller
      */
     private FigureController figureController;
-    
-    /**
-     * The figure controller
-     */
-    private PencilController pencilController;
 
     /**
      * The MainWindow constructor
@@ -73,18 +67,6 @@ public class MainWindow extends javax.swing.JFrame {
         return figureController;
     }
     
-    /**
-     * Method that returns a instance of the pencil controller
-     * @return PencilController
-     */
-    public PencilController getPencilController() {
-        if (pencilController == null){
-            pencilController = new PencilController(canvas.getPintaTrazo(),this);
-        }
-        return pencilController;
-        
-    }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -275,7 +257,6 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void btnElegirColorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnElegirColorActionPerformed
         jTextBackgroundColor.setBackground(JColorChooser.showDialog(rootPane, "Choose the color of the figure", Color.RED));
-        this.canvas.setCurrentColor(jTextBackgroundColor.getBackground());
     }//GEN-LAST:event_btnElegirColorActionPerformed
 
     private void cboFigureTypeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboFigureTypeItemStateChanged
@@ -301,7 +282,6 @@ public class MainWindow extends javax.swing.JFrame {
         canvas.addMouseListener(getControl());
         canvas.addMouseMotionListener(getControl());
         cboLineSize.addActionListener(getControl());
-        canvas.addMouseMotionListener(getPencilController());
    }
     
     
