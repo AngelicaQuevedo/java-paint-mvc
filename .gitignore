@@ -3,6 +3,7 @@
 
 # Log file
 *.log
+nbproject/private/*
 
 # BlueJ files
 *.ctxt
