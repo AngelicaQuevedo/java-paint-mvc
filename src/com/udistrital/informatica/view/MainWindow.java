@@ -2,8 +2,6 @@ package com.udistrital.informatica.view;
 
 import com.udistrital.informatica.controller.MainViewController;
 import java.awt.Color;
-import java.awt.Component;
-import java.awt.event.MouseMotionListener;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JColorChooser;
