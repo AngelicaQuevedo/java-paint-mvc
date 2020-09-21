@@ -18,12 +18,12 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 /**
- * Class FigureController 
+ * Class MainViewController 
  * @author angelicaquevedo
  * 12/09/2020
  * v 1.1
  */
-public class FigureController implements MouseListener, ActionListener, ComponentListener, ChangeListener, MouseMotionListener {
+public class MainViewController implements MouseListener, ActionListener, ComponentListener, ChangeListener, MouseMotionListener {
     
     /**
      * The Main Window
@@ -50,7 +50,7 @@ public class FigureController implements MouseListener, ActionListener, Componen
      * The Constructor
      * @param mainWindow
      */
-    public FigureController(MainWindow mainWindow) {
+    public MainViewController(MainWindow mainWindow) {
         this.mainWindow = mainWindow;
     }
 

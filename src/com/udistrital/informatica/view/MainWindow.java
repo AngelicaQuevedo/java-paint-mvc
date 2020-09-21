@@ -1,6 +1,6 @@
 package com.udistrital.informatica.view;
 
-import com.udistrital.informatica.controller.FigureController;
+import com.udistrital.informatica.controller.MainViewController;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.event.MouseMotionListener;
@@ -28,7 +28,7 @@ public class MainWindow extends javax.swing.JFrame {
     /**
      * The figure controller
      */
-    private FigureController figureController;
+    private MainViewController mainController;
 
     /**
      * The MainWindow constructor
@@ -58,13 +58,13 @@ public class MainWindow extends javax.swing.JFrame {
     
     /**
      * Method that returns a instance of the figure controller
-     * @return FigureController
+     * @return MainViewController
      */
-    public FigureController getControl() {
-        if (figureController == null) {
-            figureController = new FigureController(this);
+    public MainViewController getControl() {
+        if (mainController == null) {
+            mainController = new MainViewController(this);
         }
-        return figureController;
+        return mainController;
     }
     
     /**
