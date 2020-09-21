@@ -81,7 +81,7 @@ public class MainWindow extends javax.swing.JFrame {
         jSeparator2 = new javax.swing.JSeparator();
         jLabelColor = new javax.swing.JLabel();
         jTextBackgroundColor = new javax.swing.JTextField();
-        btnElegirColor = new javax.swing.JButton();
+        btnChooseColor = new javax.swing.JButton();
         jBtnEraser = new javax.swing.JButton();
         jBtnPencil = new javax.swing.JButton();
         cboLineSize = new javax.swing.JComboBox<>();
@@ -103,10 +103,10 @@ public class MainWindow extends javax.swing.JFrame {
 
         jTextBackgroundColor.setEditable(false);
 
-        btnElegirColor.setLabel("Choose");
-        btnElegirColor.addActionListener(new java.awt.event.ActionListener() {
+        btnChooseColor.setLabel("Choose");
+        btnChooseColor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnElegirColorActionPerformed(evt);
+                btnChooseColorActionPerformed(evt);
             }
         });
 
@@ -144,7 +144,7 @@ public class MainWindow extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTextBackgroundColor, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnElegirColor))
+                        .addComponent(btnChooseColor))
                     .addGroup(plHudLayout.createSequentialGroup()
                         .addComponent(jBtnEraser, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
@@ -183,7 +183,7 @@ public class MainWindow extends javax.swing.JFrame {
                 .addGroup(plHudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelColor)
                     .addComponent(jTextBackgroundColor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnElegirColor))
+                    .addComponent(btnChooseColor))
                 .addContainerGap(132, Short.MAX_VALUE))
         );
 
@@ -253,9 +253,9 @@ public class MainWindow extends javax.swing.JFrame {
     private void jBtnEraserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnEraserActionPerformed
     }//GEN-LAST:event_jBtnEraserActionPerformed
 
-    private void btnElegirColorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnElegirColorActionPerformed
+    private void btnChooseColorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChooseColorActionPerformed
         jTextBackgroundColor.setBackground(JColorChooser.showDialog(rootPane, "Choose the color of the figure", Color.RED));
-    }//GEN-LAST:event_btnElegirColorActionPerformed
+    }//GEN-LAST:event_btnChooseColorActionPerformed
 
     private void cboFigureTypeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboFigureTypeItemStateChanged
 
@@ -282,8 +282,8 @@ public class MainWindow extends javax.swing.JFrame {
    }
     
     
-    public JButton getBtnElegirColor() {
-        return btnElegirColor;
+    public JButton getBtnChooseColor() {
+        return btnChooseColor;
     }
 
     public JButton getBtnGenerate() {
@@ -302,26 +302,11 @@ public class MainWindow extends javax.swing.JFrame {
         return jBtnPencil;
     }
 
-    public JPanel getjPanel2() {
-        return jPanel2;
-    }
-
-    public JSeparator getjSeparator1() {
-        return jSeparator1;
-    }
-
-    public JSeparator getjSeparator2() {
-        return jSeparator2;
-    }
-
     public JTextField getjTextBackgroundColor() {
         return jTextBackgroundColor;
     }
-
-    public JPanel getPlHud() {
-        return plHud;
-    }
-        public JButton getjBtnClearCanvas() {
+    
+    public JButton getjBtnClearCanvas() {
         return jBtnClearCanvas;
     }
     
@@ -335,7 +320,7 @@ public class MainWindow extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnElegirColor;
+    private javax.swing.JButton btnChooseColor;
     private javax.swing.JButton btnGenerate;
     private javax.swing.JComboBox<String> cboFigureType;
     private javax.swing.JComboBox<String> cboLineSize;
