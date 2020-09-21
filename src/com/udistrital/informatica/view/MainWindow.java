@@ -79,13 +79,13 @@ public class MainWindow extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         cboFigureType = new javax.swing.JComboBox<>();
         jSeparator2 = new javax.swing.JSeparator();
-        jLabel9 = new javax.swing.JLabel();
+        jLabelColor = new javax.swing.JLabel();
         jTextBackgroundColor = new javax.swing.JTextField();
         btnElegirColor = new javax.swing.JButton();
         jBtnEraser = new javax.swing.JButton();
         jBtnPencil = new javax.swing.JButton();
         cboLineSize = new javax.swing.JComboBox<>();
-        jLabel1 = new javax.swing.JLabel();
+        jLabelPencilSize = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
         btnGenerate = new javax.swing.JButton();
         jBtnClearCanvas = new javax.swing.JButton();
@@ -99,7 +99,7 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
 
-        jLabel9.setText("Color");
+        jLabelColor.setText("Color");
 
         jTextBackgroundColor.setEditable(false);
 
@@ -127,7 +127,7 @@ public class MainWindow extends javax.swing.JFrame {
 
         cboLineSize.setActionCommand("");
 
-        jLabel1.setText("Pencil Size");
+        jLabelPencilSize.setText("Pencil Size");
 
         javax.swing.GroupLayout plHudLayout = new javax.swing.GroupLayout(plHud);
         plHud.setLayout(plHudLayout);
@@ -140,7 +140,7 @@ public class MainWindow extends javax.swing.JFrame {
                     .addComponent(jSeparator1)
                     .addComponent(cboFigureType, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(plHudLayout.createSequentialGroup()
-                        .addComponent(jLabel9)
+                        .addComponent(jLabelColor)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTextBackgroundColor, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -153,7 +153,7 @@ public class MainWindow extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(plHudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(plHudLayout.createSequentialGroup()
-                                .addComponent(jLabel1)
+                                .addComponent(jLabelPencilSize)
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addComponent(cboLineSize, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addComponent(jSeparator3))
@@ -170,7 +170,7 @@ public class MainWindow extends javax.swing.JFrame {
                 .addGroup(plHudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jBtnPencil, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(plHudLayout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addComponent(jLabelPencilSize)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cboLineSize, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -181,7 +181,7 @@ public class MainWindow extends javax.swing.JFrame {
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(plHudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
+                    .addComponent(jLabelColor)
                     .addComponent(jTextBackgroundColor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnElegirColor))
                 .addContainerGap(132, Short.MAX_VALUE))
@@ -343,8 +343,8 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JButton jBtnClearCanvas;
     private javax.swing.JButton jBtnEraser;
     private javax.swing.JButton jBtnPencil;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabelColor;
+    private javax.swing.JLabel jLabelPencilSize;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
