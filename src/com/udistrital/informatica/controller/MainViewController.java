@@ -8,14 +8,11 @@ import com.udistrital.informatica.view.MainWindow;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ComponentEvent;
-import java.awt.event.ComponentListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import javax.swing.JButton;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
+
 
 /**
  * Class MainViewController 
@@ -23,7 +20,7 @@ import javax.swing.event.ChangeListener;
  * 12/09/2020
  * v 1.1
  */
-public class MainViewController implements MouseListener, ActionListener, ComponentListener, ChangeListener, MouseMotionListener {
+public class MainViewController implements MouseListener, ActionListener, MouseMotionListener {
     
     /**
      * The Main Window
@@ -183,26 +180,6 @@ public class MainViewController implements MouseListener, ActionListener, Compon
         return pen;
     }
     
-    @Override
-    public void componentResized(ComponentEvent e) {
-    }
-
-    @Override
-    public void componentMoved(ComponentEvent e) {
-    }
-
-    @Override
-    public void componentShown(ComponentEvent e) {
-    }
-
-    @Override
-    public void componentHidden(ComponentEvent e) {
-    }
-
-    @Override
-    public void stateChanged(ChangeEvent e) {
-    }
-
     @Override
     public void mouseMoved(MouseEvent e) {
     }

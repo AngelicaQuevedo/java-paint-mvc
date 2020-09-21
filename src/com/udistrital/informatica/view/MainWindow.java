@@ -275,7 +275,6 @@ public class MainWindow extends javax.swing.JFrame {
         btnGenerate.addActionListener(getControl());
         jBtnPencil.addActionListener(getControl());
         jBtnEraser.addActionListener(getControl());
-        this.addComponentListener(getControl());
         jBtnClearCanvas.addActionListener(getControl());
         canvas.addMouseListener(getControl());
         canvas.addMouseMotionListener(getControl());
